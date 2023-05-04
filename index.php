@@ -67,34 +67,45 @@ $hotels = [
 
 <body>
 
-    <table class="m-5">
-        <thead>
-            <tr class="bg-danger">
-                <th>Hotel Name</th>
-                <th>Description</th>
-                <th>Parking</th>
-                <th>Rating</th>
-                <th>Distance to Center</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($hotels as $hotel) : ?>
-                <tr>
-                    <?php foreach ($hotel as $info) : ?>
-                        <td class="text-center border">
-                            <?php if ($info !== true && $info !== false) {
-                                echo $info;
-                            } elseif ($info === true) {
-                                echo "Yes";
-                            } else {
-                                echo "No";
-                            } ?>
-                        </td>
-                    <?php endforeach; ?>
+    <div class="container">
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" value="true" id="parking" name="parking">
+            <label class="form-check-label" for="parking">Free Parking</label>
+        </div>
+        <div class="mb-3">
+            <label for="vote" class="form-label">Stars</label>
+            <input type="number" class="form-control" id="vote" name="vote" min="1" max="5">
+        </div>
+        <button type="submit" class="btn btn-primary mb-3">Search</button>
+        <table class="m-5">
+            <thead>
+                <tr class="bg-danger">
+                    <th>Hotel Name</th>
+                    <th>Description</th>
+                    <th>Parking</th>
+                    <th>Rating</th>
+                    <th>Distance to Center</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php foreach ($hotels as $hotel) : ?>
+                    <tr>
+                        <?php foreach ($hotel as $info) : ?>
+                            <td class="text-center border">
+                                <?php if ($info !== true && $info !== false) {
+                                    echo $info;
+                                } elseif ($info === true) {
+                                    echo "Yes";
+                                } else {
+                                    echo "No";
+                                } ?>
+                            </td>
+                        <?php endforeach; ?>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>
